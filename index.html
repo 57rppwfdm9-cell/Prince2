@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#df6b32">
+    <meta name="description" content="Practice PRINCE2 Agile Foundation with a 109-question interactive quiz.">
+    <title>Agile Project Practice — PRINCE2 Agile Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="questions.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Agile Project Practice home">
+        <span class="brand-mark" aria-hidden="true">AP</span>
+        <span>Agile Project Practice</span>
+      </a>
+      <span class="topbar-note">PRINCE2 Agile Foundation · Version 2</span>
+    </header>
+
+    <main id="app" class="shell">
+      <section id="welcome-screen" class="welcome-screen">
+        <div class="welcome-copy">
+          <p class="eyebrow"><span class="eyebrow-dot"></span> YOUR PRACTICE SPACE</p>
+          <h1>Build confidence.<br><span>One question at a time.</span></h1>
+          <p class="intro">Practice PRINCE2 Agile concepts with a focused quiz, realistic project scenarios, and clear explanations after every answer.</p>
+          <div class="welcome-actions">
+            <button class="button button-primary" data-start="all">Start all 109 questions <span aria-hidden="true">→</span></button>
+            <button class="button button-secondary" data-start="scenarios">Practice scenarios <span aria-hidden="true">↗</span></button>
+            <button class="button button-secondary" data-screen="topics">Browse by topic <span aria-hidden="true">↓</span></button>
+            <button class="button button-secondary" data-screen="resources">Study resources <span aria-hidden="true">↗</span></button>
+          </div>
+          <p class="welcome-footnote">No timer. Your progress stays in this browser tab.</p>
+        </div>
+        <aside class="welcome-card" aria-label="Quiz contents">
+          <div class="card-topline"><span>INSIDE THE QUIZ</span><span aria-hidden="true">✳</span></div>
+          <div class="stat-row"><span class="stat-number">109</span><span class="stat-label">practice questions</span></div>
+          <div class="stat-row"><span class="stat-number">53</span><span class="stat-label">short project scenarios</span></div>
+          <div class="card-divider"></div>
+          <p class="card-label">EXPLORE THE SYLLABUS</p>
+          <ul class="topic-list">
+            <li><span class="topic-dot dot-coral"></span>Agile mindset &amp; approaches</li>
+            <li><span class="topic-dot dot-gold"></span>PRINCE2 principles &amp; practices</li>
+            <li><span class="topic-dot dot-blue"></span>Processes, quality &amp; governance</li>
+            <li><span class="topic-dot dot-green"></span>Product, operations &amp; AI</li>
+          </ul>
+          <div class="card-footer"><span>LEARN AT YOUR OWN PACE</span><span aria-hidden="true">✦</span></div>
+        </aside>
+      </section>
+
+      <section id="topic-screen" class="topic-screen hidden">
+        <div class="topic-page-heading">
+          <button id="back-home" class="text-button" type="button"><span aria-hidden="true">←</span> Back to start</button>
+          <p class="eyebrow"><span class="eyebrow-dot"></span> FOCUSED PRACTICE</p>
+          <h1>Choose a topic.</h1>
+          <p class="intro">Pick a syllabus area to practice its questions and explanations.</p>
+        </div>
+        <div id="topic-cards" class="topic-cards"></div>
+      </section>
+
+      <section id="resources-screen" class="resources-screen hidden">
+        <div class="topic-page-heading">
+          <button id="resources-back-home" class="text-button" type="button"><span aria-hidden="true">←</span> Back to start</button>
+          <p class="eyebrow"><span class="eyebrow-dot"></span> FURTHER STUDY</p>
+          <h1>Study resources.</h1>
+          <p class="intro">External practice material and references. These resources are independently published and may differ in coverage or accuracy.</p>
+        </div>
+        <div class="resource-cards">
+          <a class="resource-card" href="https://en.serview.de/prince2-trainings/prince2-agile-version-2-musterpruefung-download" target="_blank" rel="noopener noreferrer">
+            <span class="resource-kicker">SAMPLE EXAM · PDF</span>
+            <strong>SERview: PRINCE2 Agile Version 2</strong>
+            <span>Free sample exam and answer materials from the training provider.</span>
+            <span class="resource-link">Visit SERview <span aria-hidden="true">↗</span></span>
+          </a>
+          <a class="resource-card" href="https://www.prince2-online.co.uk/prince2-agile/prince2-agile-foundation-exam-questions" target="_blank" rel="noopener noreferrer">
+            <span class="resource-kicker">SAMPLE QUESTIONS</span>
+            <strong>PRINCE2 Online</strong>
+            <span>Foundation sample questions with answers on the provider's site.</span>
+            <span class="resource-link">Visit PRINCE2 Online <span aria-hidden="true">↗</span></span>
+          </a>
+          <a class="resource-card" href="https://open-exam-prep.com/practice/prince2-agile-foundation" target="_blank" rel="noopener noreferrer">
+            <span class="resource-kicker">INDEPENDENT PRACTICE</span>
+            <strong>OpenExamPrep</strong>
+            <span>Independent exam preparation and practice materials.</span>
+            <span class="resource-link">Visit OpenExamPrep <span aria-hidden="true">↗</span></span>
+          </a>
+          <a class="resource-card" href="https://quizlet.com/de/karteikarten/prince2-agile-foundation-prufungsfragen-655064797" target="_blank" rel="noopener noreferrer">
+            <span class="resource-kicker">FLASHCARDS</span>
+            <strong>Quizlet study set</strong>
+            <span>User-created flashcards; verify answers against current official guidance.</span>
+            <span class="resource-link">Visit Quizlet <span aria-hidden="true">↗</span></span>
+          </a>
+        </div>
+        <p class="resources-note">This app’s quiz questions are independently written practice material, not copied from these sites or an official exam bank.</p>
+      </section>
+
+      <section id="quiz-screen" class="quiz-screen hidden" aria-live="polite">
+        <div class="quiz-heading">
+          <button id="exit-quiz" class="text-button" type="button"><span aria-hidden="true">←</span> Exit quiz</button>
+          <span id="quiz-mode-label" class="mode-label"></span>
+        </div>
+        <div class="progress-meta">
+          <span id="question-counter"></span>
+          <span id="progress-percent"></span>
+        </div>
+        <div class="progress-track" role="progressbar" aria-label="Quiz progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+        <article class="question-card">
+          <div class="question-meta">
+            <span id="question-type" class="type-pill"></span>
+            <span id="question-domain" class="domain-label"></span>
+          </div>
+          <h2 id="question-title"></h2>
+          <p id="question-prompt" class="question-prompt"></p>
+          <p id="selection-hint" class="selection-hint"></p>
+          <div id="answer-options" class="answer-options"></div>
+          <div id="feedback" class="feedback hidden" role="status">
+            <div class="feedback-heading">
+              <span id="feedback-icon" aria-hidden="true"></span>
+              <strong id="feedback-title"></strong>
+            </div>
+            <p id="feedback-explanation"></p>
+            <p id="feedback-syllabus" class="feedback-syllabus"></p>
+          </div>
+          <div class="question-actions">
+            <span id="answered-status" class="answered-status"></span>
+            <button id="check-answer" class="button button-primary" type="button" disabled>Check answer <span aria-hidden="true">→</span></button>
+            <button id="next-question" class="button button-primary hidden" type="button">Next question <span aria-hidden="true">→</span></button>
+          </div>
+        </article>
+        <p class="quiz-bottom-note">Take a moment to think it through. Explanations appear after you answer.</p>
+      </section>
+
+      <section id="results-screen" class="results-screen hidden" aria-live="polite">
+        <div class="results-card">
+          <p class="eyebrow"><span class="eyebrow-dot"></span> QUIZ COMPLETE</p>
+          <h1 id="results-heading">Nice work.</h1>
+          <p id="results-subtitle" class="intro"></p>
+          <div class="score-block">
+            <span id="score-value" class="score-value"></span>
+            <span id="score-detail" class="score-detail"></span>
+          </div>
+          <div id="results-message" class="results-message"></div>
+          <div class="results-actions">
+            <button id="retry-incorrect" class="button button-primary hidden" type="button">Review missed questions <span aria-hidden="true">→</span></button>
+            <button id="restart-all" class="button button-secondary" type="button">Back to start</button>
+          </div>
+          <div id="missed-list" class="missed-list hidden"></div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><span>AGILE PROJECT PRACTICE</span><span>Study thoughtfully. Deliver value.</span></footer>
+  </body>
+</html>
